@@ -9,7 +9,7 @@ import { ProductsQueryDto } from '../dto/products-query.dto';
 import { PageDto } from '../../common/dto/PageDto.dto';
 import { PageMetaDto } from '../../common/dto/PageMetaDto.dto';
 import { ProductsResponseDto } from '../dto/products-response.dto';
-import { ProductDto } from '../../orders/dto/order/Product.dto';
+import { ProductDto } from '../../orders/dto/order/product.dto';
 
 @Injectable()
 export class ProductsService {
