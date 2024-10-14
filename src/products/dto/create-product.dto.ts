@@ -12,6 +12,7 @@ import {
   ArrayMinSize,
   IsPositive,
   IsNumber,
+  IsBoolean,
 } from 'class-validator';
 
 export class CreateProductDto {
@@ -131,4 +132,14 @@ export class CreateProductDto {
   @IsNumber({}, { message: 'O campo Peso deve ser um número.' })
   @IsPositive({ message: 'O campo Peso deve ser um valor positivo.' })
   weight: number;
+
+  @ApiProperty({ example: true })
+  @IsBoolean({ message: 'Esse campo deve ser um boleano.' })
+  @IsNotEmpty()
+  isFeatured: boolean;
+
+  @ApiProperty({ example: false })
+  @IsBoolean({ message: 'Esse campo deve ser um boleano.' })
+  @IsNotEmpty()
+  isNewCollection: boolean;
 }

@@ -56,6 +56,12 @@ export class ProductsResponseDto {
 
   @ApiProperty({ required: true })
   discount_price?: number;
+  
+  @ApiProperty({ required: true })
+  isFeatured: boolean;
+
+  @ApiProperty({ required: true })
+  isNewCollection: boolean;
 
   @ApiProperty({ required: true })
   createdAt: Date;

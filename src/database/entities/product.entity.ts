@@ -60,6 +60,12 @@ export class Product {
   @Column('int', { nullable: true })
   discount_price?: number;
 
+  @Column('boolean', { default: false })
+  isFeatured: boolean;
+
+  @Column('boolean', { default: false })
+  isNewCollection: boolean;
+
   @CreateDateColumn()
   createdAt: Date;
 
