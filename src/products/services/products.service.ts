@@ -64,6 +64,26 @@ export class ProductsService {
     return new PageDto(data, pageMetaDto);
   }
 
+  public async findAllFeatured(): Promise<ProductsResponseDto[]> {
+    const data = await this.repository.find({
+      where: {
+        isFeatured: true,
+      },
+    });
+
+    return data.map((item) => new ProductsResponseDto(item));
+  }
+
+  public async findAllNewCollection(): Promise<ProductsResponseDto[]> {
+    const data = await this.repository.find({
+      where: {
+        isNewCollection: true,
+      },
+    });
+
+    return data.map((item) => new ProductsResponseDto(item));
+  }
+
   public async findOne(id: string): Promise<ProductsResponseDto> {
     const product = await this.repository.findOneByOrFail({ id });
 
