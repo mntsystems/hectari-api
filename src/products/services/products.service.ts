@@ -3,7 +3,7 @@ import { CreateProductDto } from '../dto/create-product.dto';
 import { UpdateProductDto } from '../dto/update-product.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Product } from '../../database/entities/product.entity';
-import { In, Repository } from 'typeorm';
+import { In, Not, Repository } from 'typeorm';
 import { PRODUCTS_ERRORS } from '../constants/products.errors';
 import { ProductsQueryDto } from '../dto/products-query.dto';
 import { PageDto } from '../../common/dto/PageDto.dto';
@@ -47,7 +47,7 @@ export class ProductsService {
     if (dto.name) {
       // dto.name = FormatUtil.capitalizeWords(dto.name);
       queryBuilder.andWhere('products.name LIKE :name', {
-        name: `${dto.name.toLocaleLowerCase()}%`,
+        name: `${dto.name}%`,
       });
     }
 
@@ -106,7 +106,13 @@ export class ProductsService {
     id: string,
     dto: UpdateProductDto,
   ): Promise<ProductsResponseDto> {
-    // add validacao por name
+    const existByName = await this.repository.findOneBy({
+      name: dto.name,
+      id: Not(id),
+    });
+
+    if (existByName) throw PRODUCTS_ERRORS.NAME_CONFLICT;
+
     const exist = await this.findOne(id);
 
     const product = { ...exist, ...dto };
