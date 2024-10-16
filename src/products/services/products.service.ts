@@ -46,14 +46,26 @@ export class ProductsService {
 
     if (dto.name) {
       // dto.name = FormatUtil.capitalizeWords(dto.name);
-
       queryBuilder.andWhere('products.name LIKE :name', {
         name: `${dto.name.toLocaleLowerCase()}%`,
       });
     }
 
+    // Filtro por categoria
+    if (dto.category && dto.category.length > 0) {
+      queryBuilder.andWhere('products.category IN (:...category)', {
+        category: dto.category,
+      });
+    }
+
+    const orderField = dto.orderField
+      ? `products.${dto.orderField}`
+      : 'products.id';
+
+    queryBuilder.orderBy(orderField, dto.order);
+
     queryBuilder
-      .orderBy('products.id', dto.order)
+      // .orderBy('products.id', dto.order)
       .offset((dto.page - 1) * dto.take)
       .limit(dto.take);
 
