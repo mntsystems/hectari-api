@@ -46,7 +46,7 @@ export class ProductsService {
 
     if (dto.name) {
       // dto.name = FormatUtil.capitalizeWords(dto.name);
-      queryBuilder.andWhere('products.name LIKE :name', {
+      queryBuilder.andWhere('products.name ILIKE :name', {
         name: `${dto.name}%`,
       });
     }
