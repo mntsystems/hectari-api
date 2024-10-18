@@ -52,9 +52,11 @@ export class ProductsService {
     }
 
     // Filtro por categoria
-    queryBuilder.andWhere('products.category = :category', {
-      category: dto.category,
-    });
+    if (dto.category) {
+      queryBuilder.andWhere('products.category = :category', {
+        category: dto.category,
+      });
+    }
 
     const orderField = dto.orderField
       ? `products.${dto.orderField}`
