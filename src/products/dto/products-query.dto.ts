@@ -14,7 +14,7 @@ export class ProductsQueryDto extends PageOptionsDto {
   // @IsArray()
   // @Transform(({ value }) => (Array.isArray(value) ? value : [value]))
   // @IsString({ each: true })
-  @IsString()
+  @Type(() => String)
   category: string;
 
   @ApiPropertyOptional({ description: 'Field to order by' })
