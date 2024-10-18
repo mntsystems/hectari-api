@@ -65,10 +65,11 @@ export class CreateProductDto {
   @ApiProperty()
   @IsOptional()
   @IsNotEmpty({ message: 'O campo Categoria não pode estar vazio.' })
-  @IsArray({ message: 'O campo Categoria deve ser um array.' })
-  @ArrayNotEmpty({ message: 'O campo Categoria não pode ser um array vazio.' })
-  @ArrayMinSize(1, { message: 'O campo Categoria deve ter pelo menos 1 item.' })
-  category: string[];
+  @IsString()
+  // @IsArray({ message: 'O campo Categoria deve ser um array.' })
+  // @ArrayNotEmpty({ message: 'O campo Categoria não pode ser um array vazio.' })
+  // @ArrayMinSize(1, { message: 'O campo Categoria deve ter pelo menos 1 item.' })
+  category: string;
 
   @ApiProperty()
   @IsNotEmpty({ message: 'O campo Imagem não pode estar vazio.' })

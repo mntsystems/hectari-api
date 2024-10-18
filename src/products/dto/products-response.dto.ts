@@ -36,8 +36,8 @@ export class ProductsResponseDto {
   @ApiProperty({ required: true })
   price: number;
 
-  @ApiProperty({ required: true, type: [], example: ['string'] })
-  category: string[];
+  @ApiProperty({ required: true })
+  category: string;
 
   @ApiProperty({ required: true })
   main_image_url: string;

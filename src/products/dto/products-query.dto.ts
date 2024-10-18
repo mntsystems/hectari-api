@@ -1,6 +1,6 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
-import { IsArray, IsOptional, IsString } from 'class-validator';
-import { Transform, Type } from 'class-transformer';
+import { IsOptional, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
 import { PageOptionsDto } from '../../common/dto/PageOptionsDto.dto';
 
 export class ProductsQueryDto extends PageOptionsDto {
@@ -11,10 +11,11 @@ export class ProductsQueryDto extends PageOptionsDto {
 
   @ApiPropertyOptional({ description: 'Category to filter by' })
   @IsOptional()
-  @IsArray()
-  @Transform(({ value }) => (Array.isArray(value) ? value : [value]))
-  @IsString({ each: true })
-  category?: string[];
+  // @IsArray()
+  // @Transform(({ value }) => (Array.isArray(value) ? value : [value]))
+  // @IsString({ each: true })
+  @IsString()
+  category: string;
 
   @ApiPropertyOptional({ description: 'Field to order by' })
   @IsOptional()

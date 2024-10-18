@@ -39,8 +39,8 @@ export class Product {
   @Column('int')
   price: number;
 
-  @Column('simple-array')
-  category: string[];
+  @Column({ nullable: true })
+  category: string;
 
   @Column({ nullable: true })
   main_image_url: string;
