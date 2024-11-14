@@ -84,11 +84,11 @@ export class CreateProductDto {
   @IsUrl({}, { each: true })
   images: string[];
 
-  @ApiProperty()
-  @IsNotEmpty({ message: 'O campo Quantidade não pode estar vazio.' })
-  @IsInt({ message: 'O campo Quantidade deve ser um número inteiro.' })
-  @Min(0, { message: 'O campo Quantidade deve ser um valor positivo.' })
-  quantity: number;
+  // @ApiProperty()
+  // @IsNotEmpty({ message: 'O campo Quantidade não pode estar vazio.' })
+  // @IsInt({ message: 'O campo Quantidade deve ser um número inteiro.' })
+  // @Min(0, { message: 'O campo Quantidade deve ser um valor positivo.' })
+  // quantity: number;
 
   @ApiProperty()
   @IsOptional()
