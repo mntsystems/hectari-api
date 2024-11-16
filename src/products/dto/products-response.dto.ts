@@ -44,6 +44,12 @@ export class ProductsResponseDto {
 
   @ApiProperty({ required: true })
   images: string[];
+  
+  @ApiProperty({ required: true })
+  scales: string[];
+
+  @ApiProperty({ required: true })
+  colors: string[];
 
   // @ApiProperty({ required: true })
   // quantity: number;

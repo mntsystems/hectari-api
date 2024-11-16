@@ -48,6 +48,12 @@ export class Product {
   @Column('simple-array', { nullable: true })
   images: string[];
 
+  @Column('simple-array', { nullable: true })
+  scales: string[];
+
+  @Column('simple-array', { nullable: true })
+  colors: string[];
+
   // @Column('int')
   // quantity: number;
 
