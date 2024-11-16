@@ -84,6 +84,19 @@ export class CreateProductDto {
   @IsUrl({}, { each: true })
   images: string[];
 
+
+  @ApiProperty()
+  @IsArray()
+  @ArrayMinSize(1)
+  @IsString({ each: true })
+  scales: string[];
+
+  @ApiProperty()
+  @IsArray()
+  @ArrayMinSize(1)
+  @IsString({ each: true })
+  colors: string[];
+
   // @ApiProperty()
   // @IsNotEmpty({ message: 'O campo Quantidade não pode estar vazio.' })
   // @IsInt({ message: 'O campo Quantidade deve ser um número inteiro.' })
