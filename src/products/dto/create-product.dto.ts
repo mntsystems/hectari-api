@@ -86,16 +86,18 @@ export class CreateProductDto {
 
 
   @ApiProperty()
+  @IsOptional()
   @IsArray()
   @ArrayMinSize(1)
   @IsString({ each: true })
-  scales: string[];
+  scales?: string[];
 
   @ApiProperty()
+  @IsOptional()
   @IsArray()
   @ArrayMinSize(1)
   @IsString({ each: true })
-  colors: string[];
+  colors?: string[];
 
   // @ApiProperty()
   // @IsNotEmpty({ message: 'O campo Quantidade não pode estar vazio.' })

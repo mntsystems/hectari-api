@@ -84,18 +84,18 @@ export class OrdersService {
     //     quantity: item.quantity,
     //   };
     // });
-    return orderProducts.map((orderpro) => {
-      const item = products.find((item) => item.id === orderpro.id);
+    return orderProducts.map((orderpProduct) => {
+      const product = products.find((item) => item.id === orderpProduct.id);
 
       return {
-        id: item.id,
-        name: item.name,
-        main_image_url: item.main_image_url,
-        price: item.price,
-        discount_price: item?.discount_price,
-        quantity: orderpro.quantity,
-        color: orderpro.color,
-        scale: orderpro.scale,
+        id: product.id,
+        name: product.name,
+        main_image_url: product.main_image_url,
+        price: product.price,
+        discount_price: product?.discount_price,
+        quantity: orderpProduct.quantity,
+        color: orderpProduct.color ?? null,
+        scale: orderpProduct.scale ?? null,
       };
     });
   }
