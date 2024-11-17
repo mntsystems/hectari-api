@@ -72,16 +72,30 @@ export class OrdersService {
     products: ProductsResponseDto[],
     orderProducts: ProductDto[],
   ): ProductsFormattedToSave[] {
-    return products.map((product) => {
-      const item = orderProducts.find((item) => item.id === product.id);
+    // return products.map((product) => {
+    //   const item = orderProducts.find((item) => item.id === product.id);
+
+    //   return {
+    //     id: product.id,
+    //     name: product.name,
+    //     main_image_url: product.main_image_url,
+    //     price: product.price,
+    //     discount_price: product?.discount_price,
+    //     quantity: item.quantity,
+    //   };
+    // });
+    return orderProducts.map((orderpro) => {
+      const item = products.find((item) => item.id === orderpro.id);
 
       return {
-        id: product.id,
-        name: product.name,
-        main_image_url: product.main_image_url,
-        price: product.price,
-        discount_price: product?.discount_price,
-        quantity: item.quantity,
+        id: item.id,
+        name: item.name,
+        main_image_url: item.main_image_url,
+        price: item.price,
+        discount_price: item?.discount_price,
+        quantity: orderpro.quantity,
+        color: orderpro.color,
+        scale: orderpro.scale,
       };
     });
   }
@@ -163,9 +177,9 @@ export class OrdersService {
     const productIds = orderProducts.map((item) => item.id);
     const foundProducts = await this.productsService.findByIDS(productIds);
 
-    if (foundProducts.length !== orderProducts.length) {
-      throw ORDERS_ERRORS.PRODUCTS_NOT_FOUND;
-    }
+    // if (foundProducts.length !== orderProducts.length) {
+    //   throw ORDERS_ERRORS.PRODUCTS_NOT_FOUND;
+    // }
 
     return foundProducts;
   }
