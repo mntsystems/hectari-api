@@ -51,6 +51,12 @@ export class ProductsService {
       });
     }
 
+    if (dto.scale) {
+      queryBuilder.andWhere('products.scales LIKE :scale', {
+        scale: `%${dto.scale}%`,
+      });
+    }
+
     // Filtro por categoria
     if (dto.category) {
       queryBuilder.andWhere('products.category = :category', {
