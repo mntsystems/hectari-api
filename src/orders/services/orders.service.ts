@@ -84,8 +84,8 @@ export class OrdersService {
     //     quantity: item.quantity,
     //   };
     // });
-    return orderProducts.map((orderpProduct) => {
-      const product = products.find((item) => item.id === orderpProduct.id);
+    return orderProducts.map((orderProduct) => {
+      const product = products.find((item) => item.id === orderProduct.id);
 
       return {
         id: product.id,
@@ -93,9 +93,9 @@ export class OrdersService {
         main_image_url: product.main_image_url,
         price: product.price,
         discount_price: product?.discount_price,
-        quantity: orderpProduct.quantity,
-        color: orderpProduct.color ?? null,
-        scale: orderpProduct.scale ?? null,
+        quantity: orderProduct.quantity,
+        color: orderProduct.color ?? null,
+        scale: orderProduct.scale ?? null,
       };
     });
   }
