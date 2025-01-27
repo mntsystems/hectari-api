@@ -36,6 +36,9 @@ export class ProductsResponseDto {
   @ApiProperty({ required: true })
   price: number;
 
+  @ApiProperty({ required: false })
+  ref?: number;
+
   @ApiProperty({ required: true })
   category: string;
 

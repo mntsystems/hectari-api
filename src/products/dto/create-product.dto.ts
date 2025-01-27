@@ -64,6 +64,15 @@ export class CreateProductDto {
 
   @ApiProperty()
   @IsOptional()
+  // @IsNotEmpty({ message: 'O campo Ref não pode estar vazio.' })
+  @IsInt({
+    message: 'O campo Ref deve ser um número inteiro.',
+  })
+  // @Min(0, { message: 'O campo Preço deve ser um valor positivo.' })
+  ref?: number;
+
+  @ApiProperty()
+  @IsOptional()
   @IsNotEmpty({ message: 'O campo Categoria não pode estar vazio.' })
   @IsString()
   // @IsArray({ message: 'O campo Categoria deve ser um array.' })

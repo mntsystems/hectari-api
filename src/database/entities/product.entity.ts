@@ -36,6 +36,9 @@ export class Product {
   @Column()
   description: string;
 
+  @Column('int', { nullable: true })
+  ref?: number;
+
   @Column('int')
   price: number;
 
