@@ -40,6 +40,7 @@ export class MelhorEnvioService {
           `${this.MELHOR_ENVIO_URL}/v2/me/shipment/calculate`,
           {
             ...data,
+            services: '1, 2',
           },
           {
             headers: {
