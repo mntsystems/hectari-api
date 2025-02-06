@@ -189,7 +189,12 @@ export class OrdersService {
     billingType: BillingType,
   ): Promise<PaymentDetailsResponse> {
     if (billingType === BillingType.PIX) {
+      console.log('getPaymentDetails - pix ', asaasOrderId)
+
       const PIX = await this.asaasPaymentsService.getpixQRCode(asaasOrderId);
+
+      console.log('getPaymentDetails - pix  PIX', PIX)
+
       return { PIX };
     }
 
