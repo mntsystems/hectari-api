@@ -291,6 +291,8 @@ export class OrdersService {
       remoteIp,
     );
 
+    console.log('01 - asaasOrder', asaasOrder)
+
     const order = await this.repository.save({
       amount: amountWithShipping,
       billingType: dto.billingType,
@@ -306,6 +308,8 @@ export class OrdersService {
     order.shippingData = undefined;
 
     // await this.productsService.updateQuantitiesAfterSale(dto.products);
+
+    console.log('02 - order.external_order_id', order.external_order_id)
 
     const paymentDetails = await this.getPaymentDetails(
       order.external_order_id,
