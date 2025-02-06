@@ -316,6 +316,8 @@ export class OrdersService {
       order.billingType,
     );
 
+    console.log('03 - paymentDetails', paymentDetails)
+
     return new CreateOrderResponseDto(order, paymentDetails);
   }
 
