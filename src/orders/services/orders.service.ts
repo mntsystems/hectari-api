@@ -47,26 +47,51 @@ export class OrdersService {
     private readonly shippingService: ShippingService,
   ) {}
 
+  // public calculateInstallments(
+  //   totalValue: number,
+  //   requestedInstallments: number[],
+  // ): CalculateInstallments[] {
+  //   const totalValuewithInterest = totalValue + this.interestRate;
+  //   const installmentsArray = [];
+
+  //   for (const installments of requestedInstallments) {
+  //     const amount = Math.round(totalValuewithInterest);
+  //     const installmentValue = Math.round(amount / installments);
+
+  //     installmentsArray.push({
+  //       installments,
+  //       installmentValue,
+  //       amount,
+  //     });
+  //   }
+
+  //   return installmentsArray;
+  // }
+
   public calculateInstallments(
     totalValue: number,
     requestedInstallments: number[],
   ): CalculateInstallments[] {
-    const totalValuewithInterest = totalValue + this.interestRate;
     const installmentsArray = [];
-
+  
     for (const installments of requestedInstallments) {
-      const amount = Math.round(totalValuewithInterest);
+      // Aplica juros apenas se for parcelado acima de 3 vezes
+      const totalValueWithInterest =
+        installments > 3 ? totalValue + this.interestRate : totalValue;
+  
+      const amount = Math.round(totalValueWithInterest);
       const installmentValue = Math.round(amount / installments);
-
+  
       installmentsArray.push({
         installments,
         installmentValue,
         amount,
       });
     }
-
+  
     return installmentsArray;
   }
+  
 
   private formatProductsToSave(
     products: ProductsResponseDto[],
