@@ -64,6 +64,12 @@ export class ProductsService {
       });
     }
 
+    if (dto.ref) {
+      queryBuilder.andWhere('products.ref = :ref', {
+        ref: dto.ref,
+      });
+    }
+
     const orderField = dto.orderField
       ? `products.${dto.orderField}`
       : 'products.id';
